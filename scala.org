@@ -33,5 +33,47 @@ The other direction is not true.
 By default Scala use call by value.But if a type of
 parameters starts with => it uses call by name strategy.
 
+** Block and visibility.
+ 
+A block is defined by braces { .... }
+1. It contains a sequence of definitions or expressions.
+2. The last element of the bock is an expression that defines its value
+3. A block may appear everywhere an expression can.
+
+val x = 0
+def f(y: Int) = y + 1
+var result = {
+ val x = f(3)
+ x*x
+}+x
+
+The definitions inside a block are only visible from within the block.
+The definitions inside a block shadow definitions of th same name outside
+the block.
+
+** Lexical Scoping
+
+Definitions of outer blocks are visible inside a block unless they are
+shadowed.So we can simple eliminate reduntant occurrences of parameters.
+For example in our square root program, the x parameter never change
+inside the block definitions so we can delete all the duplicate occurrences 
+because of lexical scoping   
+
+** Semicolon
+
+If  there are more than one statements on a line they need be separated by semicolons.
+
+** Multiple line expression
+
+There are two ways of writting multiple line expression :
+1. Put the expression between parenthesis.
+2. Write an operator on the first line
+
+(SomeExpression 
++ SomeOtherExpression)
+
+SomeExpression +
+SomeOtherExpression
+
 * Books
 Structure and interpretation of computer programs. Harold.
